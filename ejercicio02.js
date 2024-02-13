@@ -1,61 +1,51 @@
 class Persona {
-    constructor(nombre,direccion,telefono,edad) {
-        this.nombre = nombre
-        this.direccion = direccion
-        this.telefono = telefono
-        this.edad= edad
+    constructor(nombre, direccion, telefono, edad) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.edad = edad;
     }
 
-
-    verificarVacio(nom,dir,tel,eda){
-
-        if(nombre !='' && direccion!='' && telefono!=''  && edad!='')
-        return true
+    verificarVacio() {
+        return this.nombre !== '' && this.direccion !== '' && this.telefono !== '' && this.edad !== '';
     }
 
-    verificarEdad(num){
-
-        if(isNaN(num)){console.log("its not a number")}
-        return true
+    verificarEdad() {
+        if (isNaN(this.edad)) {
+            console.log("La edad no es un número");
+            return false;
+        }
+        return true;
     }
 
-    promedioEdad(arreglo){
-
-
-        let total = 0
-
-        arreglo.map(({edad}) => total+=edad)
-
-        const resultado = total / data.length
-
-        return console.log('El resultado del promedio es: ', resultado)
+    static promedioEdad(personas) {
+        let total = 0;
+        personas.forEach(persona => total += parseInt(persona.edad));
+        const resultado = total / personas.length;
+        console.log('El resultado del promedio es: ', resultado);
     }
 
-    nombrePersonaOrd(){
-
+    static nombrePersonaOrd(personas) {
+        return personas.map(persona => persona.nombre.toUpperCase()).sort();
     }
-
-
 }
 
-const arr = [];
+const personas = [];
 
-while (arr.length < 1) {
+while (personas.length < 2) {
     let nombre = prompt("Ingrese el nombre");
     let direccion = prompt("Ingrese direccion");
     let telefono = prompt("Ingrese telefono");
     let edad = prompt("Ingrese la edad");
 
+    let nuevaPersona = new Persona(nombre, direccion, telefono, edad);
 
-    if(!Persona.verificarVacio(nombre,direccion,telefono,edad) && verificarEdad(edad)){
-        console.log("algo hiciste mal")
-    }else{
-
-        let newPersona = new Persona(nombre,direccion,telefono,edad)
-        arr.push(newPersona)
+    if (!nuevaPersona.verificarVacio() || !nuevaPersona.verificarEdad()) {
+        console.log("Algo salió mal. Verifique los datos ingresados.");
+    } else {
+        personas.push(nuevaPersona);
     }
- 
 }
 
-
- 
+Persona.promedioEdad(personas);
+Persona.nombrePersonaOrd(personas);
