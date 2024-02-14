@@ -26,9 +26,11 @@ class Persona {
     }
 
     static nombrePersonaOrd(personas) {
-        return personas.map(persona => persona.nombre.toUpperCase()).sort();
-        //return personas.forEach(personas => console.log(personas.persona))
+        personas.map(persona => persona.nombre.toUpperCase()).sort().forEach(nombre => {
+            console.log(nombre);
+        });
     }
+    
 }
 
 const personas = [];
