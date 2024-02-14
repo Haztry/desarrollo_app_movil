@@ -1,0 +1,10 @@
+*{
+    padding: px;
+    margin: 0px;
+}
+
+.hola{
+    background-color: red;
+    padding: 10px;
+    color: orange;
+}

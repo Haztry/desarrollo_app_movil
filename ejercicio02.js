@@ -27,12 +27,13 @@ class Persona {
 
     static nombrePersonaOrd(personas) {
         return personas.map(persona => persona.nombre.toUpperCase()).sort();
+        //return personas.forEach(personas => console.log(personas.persona))
     }
 }
 
 const personas = [];
 
-while (personas.length < 2) {
+while (personas.length < 3) {
     let nombre = prompt("Ingrese el nombre");
     let direccion = prompt("Ingrese direccion");
     let telefono = prompt("Ingrese telefono");
